@@ -23,16 +23,21 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         {!hideNavbar && (
-          <nav className="bg-green-900 text-white px-8 py-4 flex justify-between">
-            <div className="flex gap-6 font-semibold">
+          <nav className="bg-green-900 text-white px-8 py-4 grid grid-cols-3 items-center">
+            
+            {/* LEFT: Website Name */}
+            <div className="font-bold text-lg">
+              <a href="/">Retro Health Desk</a>
+            </div>
+
+            {/* CENTER: Navigation */}
+            <div className="flex justify-center gap-6 font-semibold">
               <a href="/">Home</a>
 
-              <a href="/dashboard">Dashboard</a>
+              {user && <a href="/dashboard">Dashboard</a>}
 
-              {/* Everyone can view notices */}
               <a href="/notice">Notice Board</a>
 
-              {/* Patient-only links */}
               {user?.role === "patient" && (
                 <>
                   <a href="/appointment">Appointment</a>
@@ -40,13 +45,13 @@ export default function RootLayout({ children }) {
                 </>
               )}
 
-              {/* Admin-only link */}
               {user?.role === "admin" && (
                 <a href="/admin">Admin</a>
               )}
             </div>
 
-            <div>
+            {/* RIGHT: Login / Logout */}
+            <div className="flex justify-end">
               {user ? (
                 <button onClick={logout} className="underline">
                   Logout ({user.username})
@@ -55,11 +60,12 @@ export default function RootLayout({ children }) {
                 <a href="/login" className="underline">Login</a>
               )}
             </div>
+
           </nav>
         )}
 
-        < main className="p-6">{children}</main>
+        <main className="p-6">{children}</main>
       </body>
-    </html >
+    </html>
   );
 }
