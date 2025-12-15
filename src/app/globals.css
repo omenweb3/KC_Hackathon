@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Retro card look */
+.retro-card {
+  border: 2px solid #2f3e2e;
+  box-shadow: 4px 4px 0px #2f3e2e;
+  background-color: #ffffff;
+}
+
+/* Old screen glow */
+.retro-screen {
+  background: radial-gradient(circle at center, #f9f7f3 0%, #e5e1d8 100%);
+}
+
+/* Retro button */
+.retro-btn {
+  background-color: #1f3d2b;
+  color: white;
+  border: 2px solid #13271b;
+  box-shadow: 2px 2px 0px #13271b;
+}
+
+.retro-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: none;
+}
+
+/* Hover animation for feature cards */
+.retro-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.retro-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 8px 8px 0px #2f3e2e;
+}
+
+
