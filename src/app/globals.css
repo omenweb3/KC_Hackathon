@@ -64,4 +64,21 @@ body {
   box-shadow: 8px 8px 0px #2f3e2e;
 }
 
+/* Critical alert pulse animation */
+@keyframes pulseRed {
+  0% {
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(220, 38, 38, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0);
+  }
+}
+
+.critical-alert {
+  animation: pulseRed 1.5s infinite;
+  border-left: 6px solid #dc2626;
+}
 

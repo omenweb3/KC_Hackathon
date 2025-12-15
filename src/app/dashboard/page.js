@@ -86,7 +86,12 @@ export default function Dashboard() {
                 ) : (
                     <ul className="space-y-2">
                         {notices.map((n, i) => (
-                            <li key={i} className="flex items-center gap-3">
+                            <li
+                                key={i}
+                                className={`flex items-center gap-3 p-2 ${n.priority === "critical" ? "critical-alert" : ""
+                                    }`}
+                            >
+
                                 <span>
                                     {n.priority === "critical" && "🔴"}
                                     {n.priority === "important" && "🟡"}
