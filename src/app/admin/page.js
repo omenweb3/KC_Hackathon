@@ -6,6 +6,12 @@ import { useRouter } from "next/navigation";
 export default function Admin() {
     const router = useRouter();
 
+    const deleteNotice = (index) => {
+        const updated = notices.filter((_, i) => i !== index);
+        localStorage.setItem("notices", JSON.stringify(updated));
+        setNotices(updated);
+    };
+
     const [notices, setNotices] = useState([]);
     const [appointments, setAppointments] = useState([]);
     const [text, setText] = useState("");
@@ -103,11 +109,24 @@ export default function Admin() {
 
                 <ul className="space-y-2">
                     {notices.map((n, i) => (
-                        <li key={i} className="border p-2">
-                            <b>[{n.priority.toUpperCase()}]</b> {n.text}
+                        <li
+                            key={i}
+                            className="border p-2 flex justify-between items-center"
+                        >
+                            <span>
+                                <b>[{n.priority.toUpperCase()}]</b> {n.text}
+                            </span>
+
+                            <button
+                                onClick={() => deleteNotice(i)}
+                                className="text-red-600 font-bold hover:underline"
+                            >
+                                ✖
+                            </button>
                         </li>
                     ))}
                 </ul>
+
             </div>
         </div>
     );
